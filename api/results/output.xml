@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 3.1.2 (Python 3.7.4 on win32)" generated="20191030 20:45:20.312" rpa="false">
+<suite id="s1" name="Tests" source="C:\Users\amenuiya\Desktop\robot\api\tests">
+<suite id="s1-s1" name="Api" source="C:\Users\amenuiya\Desktop\robot\api\tests\api.robot">
+<test id="s1-s1-t1" name="Cenário: Inserir um post na pagina jsonplaceholder">
+<kw name="Dado que o usuário esteja conectado na jsonplaceholder" library="kw_api">
+<kw name="Create Session" library="RequestsLibrary">
+<doc>Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>jsonplace</arg>
+<arg>https://jsonplaceholder.typicode.com</arg>
+</arguments>
+<msg timestamp="20191030 20:45:20.603" level="INFO">Creating Session using : alias=jsonplace, url=https://jsonplaceholder.typicode.com, headers={},                     cookies=None, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20191030 20:45:20.603" endtime="20191030 20:45:20.604"></status>
+</kw>
+<status status="PASS" starttime="20191030 20:45:20.603" endtime="20191030 20:45:20.604"></status>
+</kw>
+<kw name="Quando enviar um post com os dados" library="kw_api">
+<kw name="Post Request" library="RequestsLibrary">
+<doc>Send a POST request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>jsonplace</arg>
+<arg>/posts</arg>
+<arg>data=${json_post}</arg>
+</arguments>
+<assign>
+<var>${RESPOSTA}</var>
+</assign>
+<msg timestamp="20191030 20:45:21.321" level="INFO">Post Request using : alias=jsonplace, uri=/posts, data=&lt;empty&gt;, headers=None, files=None, allow_redirects=True </msg>
+<msg timestamp="20191030 20:45:21.321" level="INFO">${RESPOSTA} = &lt;Response [201]&gt;</msg>
+<status status="PASS" starttime="20191030 20:45:20.604" endtime="20191030 20:45:21.321"></status>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<arguments>
+<arg>${RESPOSTA}</arg>
+</arguments>
+<msg timestamp="20191030 20:45:21.321" level="INFO">${RESPOSTA} = &lt;Response [201]&gt;</msg>
+<status status="PASS" starttime="20191030 20:45:21.321" endtime="20191030 20:45:21.321"></status>
+</kw>
+<status status="PASS" starttime="20191030 20:45:20.604" endtime="20191030 20:45:21.321"></status>
+</kw>
+<kw name="Então o endpoint irá retornar o status 201" library="kw_api">
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${RESPOSTA.status_code}</arg>
+<arg>201</arg>
+</arguments>
+<msg timestamp="20191030 20:45:21.326" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" starttime="20191030 20:45:21.325" endtime="20191030 20:45:21.326"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>"O Status Retornado ${RESPOSTA.status_code}"</arg>
+</arguments>
+<msg timestamp="20191030 20:45:21.328" level="INFO">"O Status Retornado 201"</msg>
+<status status="PASS" starttime="20191030 20:45:21.326" endtime="20191030 20:45:21.328"></status>
+</kw>
+<status status="PASS" starttime="20191030 20:45:21.324" endtime="20191030 20:45:21.328"></status>
+</kw>
+<tags>
+<tag>Batman</tag>
+</tags>
+<status status="PASS" starttime="20191030 20:45:20.602" endtime="20191030 20:45:21.329" critical="yes"></status>
+</test>
+<test id="s1-s1-t2" name="Cenário: Pegar dados de um post">
+<kw name="Dado que o usuário esteja conectado na jsonplaceholder" library="kw_api">
+<kw name="Create Session" library="RequestsLibrary">
+<doc>Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>jsonplace</arg>
+<arg>https://jsonplaceholder.typicode.com</arg>
+</arguments>
+<msg timestamp="20191030 20:45:21.332" level="INFO">Creating Session using : alias=jsonplace, url=https://jsonplaceholder.typicode.com, headers={},                     cookies=None, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20191030 20:45:21.332" endtime="20191030 20:45:21.332"></status>
+</kw>
+<status status="PASS" starttime="20191030 20:45:21.331" endtime="20191030 20:45:21.332"></status>
+</kw>
+<kw name="Quando solicitar um GET" library="kw_api">
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>jsonplace</arg>
+<arg>/posts/11</arg>
+</arguments>
+<assign>
+<var>${RESPOSTA}</var>
+</assign>
+<msg timestamp="20191030 20:45:21.929" level="INFO">Get Request using : alias=jsonplace, uri=/posts/11, headers=None json=None</msg>
+<msg timestamp="20191030 20:45:21.929" level="INFO">${RESPOSTA} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20191030 20:45:21.334" endtime="20191030 20:45:21.930"></status>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<arguments>
+<arg>${RESPOSTA}</arg>
+</arguments>
+<msg timestamp="20191030 20:45:21.931" level="INFO">${RESPOSTA} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20191030 20:45:21.930" endtime="20191030 20:45:21.932"></status>
+</kw>
+<status status="PASS" starttime="20191030 20:45:21.333" endtime="20191030 20:45:21.932"></status>
+</kw>
+<kw name="Então o endpoint irá retornar os dados do post" library="kw_api">
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${RESPOSTA.status_code}</arg>
+<arg>200</arg>
+</arguments>
+<msg timestamp="20191030 20:45:21.934" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" starttime="20191030 20:45:21.934" endtime="20191030 20:45:21.934"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${RESPOSTA.json()}</arg>
+</arguments>
+<msg timestamp="20191030 20:45:21.934" level="INFO">{'userId': 2, 'id': 11, 'title': 'et ea vero quia laudantium autem', 'body': 'delectus reiciendis molestiae occaecati non minima eveniet qui voluptatibus\naccusamus in eum beatae sit\nvel qui neque voluptates ut commodi qui incidunt\nut animi commodi'}</msg>
+<status status="PASS" starttime="20191030 20:45:21.934" endtime="20191030 20:45:21.938"></status>
+</kw>
+<status status="PASS" starttime="20191030 20:45:21.933" endtime="20191030 20:45:21.938"></status>
+</kw>
+<tags>
+<tag>Batman</tag>
+</tags>
+<status status="PASS" starttime="20191030 20:45:21.330" endtime="20191030 20:45:21.939" critical="yes"></status>
+</test>
+<status status="PASS" starttime="20191030 20:45:20.363" endtime="20191030 20:45:21.944"></status>
+</suite>
+<status status="PASS" starttime="20191030 20:45:20.314" endtime="20191030 20:45:21.952"></status>
+</suite>
+<statistics>
+<total>
+<stat pass="2" fail="0">Critical Tests</stat>
+<stat pass="2" fail="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="2" fail="0">Batman</stat>
+</tag>
+<suite>
+<stat pass="2" fail="0" id="s1" name="Tests">Tests</stat>
+<stat pass="2" fail="0" id="s1-s1" name="Api">Tests.Api</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

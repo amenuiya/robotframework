@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 3.1.2 (Python 3.7.4 on win32)" generated="20191030 21:18:03.822" rpa="false">
+<suite id="s1" name="Tests" source="C:\Users\amenuiya\Desktop\robot\desafios\web_shop\tests">
+<suite id="s1-s1" name="Web" source="C:\Users\amenuiya\Desktop\robot\desafios\web_shop\tests\web.robot">
+<test id="s1-s1-t1" name="Cenário: Pesquisar pela Blusa Blouse no site de roupas">
+<kw name="Abrir Navegador" library="kw_web" type="setup">
+<kw name="Open Browser" library="SeleniumLibrary">
+<doc>Opens a new browser instance to the given ``url``.</doc>
+<arguments>
+<arg>about:blank</arg>
+<arg>Chrome</arg>
+</arguments>
+<msg timestamp="20191030 21:18:04.188" level="INFO">Opening browser 'Chrome' to base url 'about:blank'.</msg>
+<status status="PASS" starttime="20191030 21:18:04.188" endtime="20191030 21:18:07.050"></status>
+</kw>
+<status status="PASS" starttime="20191030 21:18:04.187" endtime="20191030 21:18:07.050"></status>
+</kw>
+<kw name="Dado que o usuário acesse o site de roupas" library="kw_web">
+<kw name="Go To" library="SeleniumLibrary">
+<doc>Navigates the active browser instance to the provided ``url``.</doc>
+<arguments>
+<arg>http://automationpractice.com/index.php</arg>
+</arguments>
+<msg timestamp="20191030 21:18:07.055" level="INFO">Opening url 'http://automationpractice.com/index.php'</msg>
+<status status="PASS" starttime="20191030 21:18:07.055" endtime="20191030 21:18:12.664"></status>
+</kw>
+<status status="PASS" starttime="20191030 21:18:07.054" endtime="20191030 21:18:12.664"></status>
+</kw>
+<kw name="Quando inserir o nome da Blusa Blouse" library="kw_web">
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>id=search_query_top</arg>
+<arg>Blouse</arg>
+</arguments>
+<msg timestamp="20191030 21:18:12.665" level="INFO">Typing text 'Blouse' into text field 'id=search_query_top'.</msg>
+<status status="PASS" starttime="20191030 21:18:12.665" endtime="20191030 21:18:12.794"></status>
+</kw>
+<status status="PASS" starttime="20191030 21:18:12.665" endtime="20191030 21:18:12.794"></status>
+</kw>
+<kw name="E clicar em pesquisar" library="kw_web">
+<kw name="Click Button" library="SeleniumLibrary">
+<doc>Clicks button identified by ``locator``.</doc>
+<arguments>
+<arg>name=submit_search</arg>
+</arguments>
+<msg timestamp="20191030 21:18:12.794" level="INFO">Clicking button 'name=submit_search'.</msg>
+<status status="PASS" starttime="20191030 21:18:12.794" endtime="20191030 21:18:13.978"></status>
+</kw>
+<status status="PASS" starttime="20191030 21:18:12.794" endtime="20191030 21:18:13.978"></status>
+</kw>
+<kw name="Então o site irá retornar a pesquisa com a blusa blouse" library="kw_web">
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<arguments>
+<arg>2s</arg>
+<arg>2s</arg>
+<arg>Page Should Contain Element</arg>
+<arg>xpath=//*[@class='product-container']//*[contains(text(),'Blouse')]</arg>
+</arguments>
+<kw name="Page Should Contain Element" library="SeleniumLibrary">
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<arguments>
+<arg>xpath=//*[@class='product-container']//*[contains(text(),'Blouse')]</arg>
+</arguments>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<doc>Takes screenshot of the current page and embeds it into log file.</doc>
+<msg timestamp="20191030 21:18:14.432" level="INFO" html="yes">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-2.png"&gt;&lt;img src="selenium-screenshot-2.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20191030 21:18:14.019" endtime="20191030 21:18:14.433"></status>
+</kw>
+<msg timestamp="20191030 21:18:14.436" level="FAIL">Page should have contained element 'xpath=//*[@class='product-container']//*[contains(text(),'Blouse')]' but did not.</msg>
+<status status="FAIL" starttime="20191030 21:18:13.981" endtime="20191030 21:18:14.436"></status>
+</kw>
+<kw name="Page Should Contain Element" library="SeleniumLibrary">
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<arguments>
+<arg>xpath=//*[@class='product-container']//*[contains(text(),'Blouse')]</arg>
+</arguments>
+<msg timestamp="20191030 21:18:16.474" level="INFO">Current page contains element 'xpath=//*[@class='product-container']//*[contains(text(),'Blouse')]'.</msg>
+<status status="PASS" starttime="20191030 21:18:16.438" endtime="20191030 21:18:16.474"></status>
+</kw>
+<status status="PASS" starttime="20191030 21:18:13.980" endtime="20191030 21:18:16.474"></status>
+</kw>
+<status status="PASS" starttime="20191030 21:18:13.979" endtime="20191030 21:18:16.474"></status>
+</kw>
+<kw name="Fechar Navegador" library="kw_web" type="teardown">
+<kw name="Close Browser" library="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20191030 21:18:16.480" endtime="20191030 21:18:18.770"></status>
+</kw>
+<status status="PASS" starttime="20191030 21:18:16.479" endtime="20191030 21:18:18.770"></status>
+</kw>
+<status status="PASS" starttime="20191030 21:18:04.186" endtime="20191030 21:18:18.772" critical="yes"></status>
+</test>
+<status status="PASS" starttime="20191030 21:18:03.859" endtime="20191030 21:18:18.779"></status>
+</suite>
+<status status="PASS" starttime="20191030 21:18:03.823" endtime="20191030 21:18:18.794"></status>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0">Critical Tests</stat>
+<stat pass="1" fail="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" id="s1" name="Tests">Tests</stat>
+<stat pass="1" fail="0" id="s1-s1" name="Web">Tests.Web</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
